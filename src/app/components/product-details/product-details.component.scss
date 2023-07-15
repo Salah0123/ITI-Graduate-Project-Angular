@@ -1,0 +1,142 @@
+// .product-card__discount {
+//     color: #c41f28;
+// }
+
+.product-card__code {
+    margin: 2rem 0rem;
+    color: gray;
+    font-weight: 300;
+}
+
+
+
+.product-card__size__title {
+    // margin-top: 50px;
+    font-weight: bold;
+    color: #23252a;
+}
+
+
+.row {
+    display: flex;
+}
+
+.product-card__button {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.product-card__button button {
+    width: 100%;
+    background-color: #23252a;
+    color: #ffffff;
+    padding: 5px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.product-card__button button:hover {
+    background-color: #ffffff;
+    color: #23252a;
+}
+
+.product-card__size__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product-card__size__buttons button {
+    flex: 1 0 calc(20% - 10px);
+    background-color: #ffffff;
+    margin: 5px;
+    padding: 5px;
+    border: none;
+}
+
+.selected {
+    // background-color: red !important;
+    border: 1px solid black !important;
+}
+
+.disabled-button {
+    pointer-events: none;
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.product_info {
+    margin-top: 20px;
+}
+
+.product_info li {
+    list-style-type: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .container {
+//     position: relative;
+// }
+
+// #overlay {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, 0.5);
+//     display: none;
+//     opacity: 0;
+//     transition: opacity 0.5s ease;
+//     animation: showOverlay 0.5s forwards;
+// }
+
+// #overlay.show {
+//     display: block;
+// }
+
+// #overlay-content {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     height: 100%;
+//     width: 500px;
+//     /* adjust the width as needed */
+//     background-color: #fff;
+//     padding: 30px;
+//     // text-align: center;
+//     z-index: 999;
+// }
+
+// #overlay-content h2 {
+//     text-align: center;
+//     margin: 20px;
+// }
+
+// #overlay-content li {
+//     margin: 20px 0px;
+// }
+
+// #close-overlay {
+//     margin-top: 20px;
+// }

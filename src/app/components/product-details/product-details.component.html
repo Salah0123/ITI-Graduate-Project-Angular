@@ -1,0 +1,62 @@
+<app-header class="app-header"></app-header>
+<div class="container mt-5">
+
+
+    <div class="product-card">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src='http://localhost:3000/{{product.image[0].filename}}'
+                                style="width: 100%; height: auto;">
+                        </div>
+                        <div class="col-md-6">
+                            <img src='http://localhost:3000/{{product.image[1].filename}}'
+                                style="width: 100%; height: auto;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h3 class="product-card__size__title">{{product.name}}</h3>
+                            <h3>{{product.description}}</h3>
+                            <h3 class="product-card__size__title">{{product.price}} EGP</h3>
+                            <div class="product-card__discount">
+                            </div>
+
+                        </div>
+                        <!-- <div class="col-md-2">
+                            <i class="fa-regular fa-heart"></i><br>
+                        </div> -->
+                    </div>
+                    <div class="row product-card__size">
+                        <div class="product-card__size__title">Size Options</div>
+                        <div class="d-flex flex-wrap product-card__size__buttons" title="Please select size">
+                            <button type="button" title="Please choose size" value="S"
+                                [class.selected]="selectedSize === 'S'" (click)="selectSize('S')">S</button>
+                            <button type="button" title="Please choose size" value="M"
+                                [class.selected]="selectedSize === 'M'" (click)="selectSize('M')">M</button>
+                            <button type="button" title="Please choose size" value="L"
+                                [class.selected]="selectedSize === 'L'" (click)="selectSize('L')">L</button>
+                            <button type="button" title="Please choose size" value="XL"
+                                [class.selected]="selectedSize === 'XL'" (click)="selectSize('XL')">XL</button>
+                            <button type="button" title="Please choose size" value="XXL"
+                                [class.selected]="selectedSize === 'XXL'" (click)="selectSize('XXL')">XXL</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="product-card__button">
+                            <button class="addToCart" (click)="addToCard(product)">ADD TO CART</button>
+                        </div>
+                    </div>
+                    <div class="product-card__code">Product Code: {{product._id}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<app-footer></app-footer>

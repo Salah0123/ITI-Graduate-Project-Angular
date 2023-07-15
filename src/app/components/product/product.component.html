@@ -1,0 +1,30 @@
+<div class="grid-item">
+    <!-- <img src="{{data.image}}" routerLink="/productDetails/{{data.id}}"> -->
+    <img src='http://localhost:3000/{{data.image[0].filename}}' (click)="productDetails(data)">
+
+    <!-- <div class="add-to-cart-icon">
+    <i class="fa-solid fa-cart-plus cartIcon"></i>
+</div>
+
+<div class="heart-icon">
+    <i class="fa-regular fa-heart heartIcon"></i>
+</div> -->
+
+    <div class="container">
+
+        <div class="product-card__info mb-3">
+            <span style="font-size: small;">{{data.name}}</span>
+            <br>
+            <span style="font-weight: bold;">{{data.price}} EGP</span>
+            <br>
+            <!-- <span style="color: #c41f28;" *ngIf="data.sale">40% Discount <span
+                style="font-weight: bold;">{{data.salePrice}}EGP</span>
+        </span> -->
+            <!-- <br> -->
+            <div style="text-align: center; margin-top: 1rem;">
+                <button class="africanButton w-100" (click)="add()">Add To Cart</button>
+            </div>
+            <!-- <button class="africanButton" routerLink="//productDetails/{{data.id}}">View Details</button> -->
+        </div>
+    </div>
+</div>

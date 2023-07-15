@@ -1,0 +1,73 @@
+<div id="mySlider" class="carousel slide " data-bs-ride="carousel" data-bs-interval="2000">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="slide-content">
+        <h6><i class="fa-solid fa-gift"></i> FREE SHIPPING ON ORDERS OVER 600 EGP</h6>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="slide-content">
+        <h6><i class="fa-solid fa-gift"></i> FREE SHIPPING ON ORDERS OVER 600 EGP</h6>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="slide-content">
+        <h6><i class="fa-solid fa-gift"></i> FREE SHIPPING ON ORDERS OVER 600 EGP</h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg sticky-top"
+  style="background-color: rgba(255, 255, 255, 0.9); box-shadow: 0 6px 5px rgba(0, 0, 0, 0.1);">
+
+  <div class=" container-fluid">
+    <!-- store name -->
+    <!-- <a class="navbar-brand  fw-bold me-5" style="font-size: 30px;" routerLink="/home">African</a> -->
+    <img src="../../../assets/img/Logo.png" class="mx-4" style="width: 150px; height:60px; cursor: pointer;"
+      routerLink="/home">
+    <!-- button when minimize screen -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+      <!-- ///// -->
+      <ul class="navbar-nav  mb-2 mb-lg-0 " *ngFor="let cat of categories">
+        <li class="nav-item ">
+          <a class="nav-link " [routerLink]='["/Products",cat._id]' routerLinkActive="active"
+            (click)="getProductsByCategory(cat._id)">{{cat.name}}</a>
+        </li>
+      </ul>
+
+      <form class="d-flex mx-auto" role="search">
+        <input #search class=" me-2 no-outline" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn" type="submit" (click)="searchProducts(search.value)"><i
+            class="fa-solid fa-magnifying-glass fa-lg"></i></button>
+      </form>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-2">
+        <li class="nav-item me-2">
+          <a *ngIf="!isAuthenticate" class="nav-link " routerLink="/login"><i
+              class="fa-sharp fa-regular fa-user me-1"></i> Login</a>
+          <a *ngIf="isAuthenticate" class="nav-link " (click)="logout()" routerLink="/login"><i
+              class="fa-sharp fa-regular fa-user me-1"></i> Logout</a>
+        </li>
+        <li class="nav-item me-2" *ngIf="isAdmin=='admin'">
+          <a class="nav-link" routerLink="/admin">
+            <i class="fa-solid fa-lock me-1"></i> Admin</a>
+        </li>
+        <!-- <li class="nav-item me-2">
+          <a class="nav-link" routerLink="/shoppingCart"><i class="fa-regular fa-heart me-1"></i> Favorites</a>
+        </li> -->
+        <li class="nav-item me-2">
+          <a class="nav-link " routerLink="/shoppingCart"><i class="fa-solid fa-cart-plus me-1"></i> Shopping Cart</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>

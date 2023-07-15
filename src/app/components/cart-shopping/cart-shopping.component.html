@@ -1,0 +1,179 @@
+<app-header></app-header>
+<div class="container" *ngIf="cart.length>=1">
+  <div class="row mt-4  py-2">
+    <span style="font-weight: 600; font-size: x-large;">Shopping Cart ({{cart.length}} Product)</span>
+  </div>
+
+  <div class="row mb-4 mt-2">
+
+
+    <div class="col-md-8 col-lg-8 ">
+      <div class="row free-shopping py-3 " *ngIf="subTotal>600 ">
+        <span>You got the <span style="font-weight: 600;">free shipping</span> opportunity!</span>
+      </div>
+
+
+      <div class="row  border mt-2">
+        <div class="container">
+          <div class="row pt-3 px-3" *ngFor="let item of cart last as lItem">
+            <div class="col-md-2 ">
+              <!-- <img src='http://localhost:3000/{{item.image}}' style="width: 100%; height: auto;" alt="" srcset=""> -->
+              <img src='http://localhost:3000/{{item.product.image[0].filename}}' style="width: 100%; height: auto;" alt=""
+                srcset="">
+            </div>
+            <div class="col-md-6 mb-4 ">
+              <div class="row my-1"><span>{{item.product.name}}</span></div>
+              <div class="row my-1"><span style="font-weight: 700; ">{{item.product.price}} EGP</span></div>
+              <!-- <div class="row my-1"><span style="color: #c41f28;" *ngIf="true">%40 discount <span -->
+              <!-- style="font-weight: 700; ">{{item.salePrice}} -->
+              <!-- EGP</span></span></div> -->
+              <div class="row my-3">
+                <div class="col-md-6">
+                  <div class=" product-card__size__buttons" title="Please select size">
+                    <button type="button" title="Please choose size" value="S" [class.selected]="item.size === 'S'"
+                      (click)="selectSize('S',item)">S</button>
+                    <button type="button" title="Please choose size" value="M" [class.selected]="item.size=== 'M'"
+                      (click)="selectSize('M',item)">M</button>
+                    <button type="button" title="Please choose size" value="L" [class.selected]="item.size === 'L'"
+                      (click)="selectSize('L',item)">L</button>
+                    <button type="button" title="Please choose size" value="XL" [class.selected]="item.size === 'XL'"
+                      (click)="selectSize('XL',item)">XL</button>
+                    <button type="button" title="Please choose size" value="XXL" [class.selected]="item.size === 'XXL'"
+                      (click)="selectSize('XXL',item)">XXL</button>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row mt-3">
+                <div class="col-md-3">
+                  <i class="fa-solid fa-trash fa-xs " style="cursor: pointer;" (click)="removeItem(item.product._id)"></i>
+                  <span class="mx-1" style="font-weight: 500; font-size: larger;">remove</span>
+                </div>
+                <div class="col-md-4">
+                  <i class="fa-solid fa-minus fa-xs" style="cursor: pointer;" *ngIf="item.quantity>=1"
+                    (click)="minusOne(item.product._id)"></i>
+                  <span class="mx-2" style="font-weight: 500; font-size: larger;">Quantity {{item.quantity}}</span>
+                  <i class="fa-solid fa-plus fa-xs" style="cursor: pointer;" (click)="plusOne(item.product._id)"></i>
+                </div>
+                <div class="col-md-4" *ngIf="item.product.quantity<=2">
+                  <i class="fa-solid fa-shirt " style="color: #c41f28;"></i>
+                  <span class="mx-1" style="font-weight: 500; font-size: larger; color: #c41f28;">last
+                    item</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 text-center d-flex  align-items-end mb-5">
+              <h4 class="myborder p-2">Total : {{item.quantity * item.product.price}}</h4>
+            </div>
+            <hr class="mt-3" *ngIf="!lItem">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1 col-lg-1"></div>
+    <div class="col-md-3 col-lg-3 border p-4 ">
+      <div class="container">
+        <div class="row d-flex align-items-center">
+          <div class="col">
+            <span style="font-weight: 400;">Total Amount</span>
+          </div>
+          <div class="col">
+            <span style="font-weight: 600; font-size: x-large;"> {{total}} EGP</span>
+          </div>
+          <hr class="mt-3">
+        </div>
+        <div class="row  d-flex justify-content-end align-items-center">
+          <div class="container">
+            <!-- Sub Total  -->
+            <div class="row mt-2">
+              <div class="col-md-8 d-flex justify-content-start">
+                <span style="font-weight: 200;">Sub Total</span>
+              </div>
+              <div class="col-md-4 d-flex justify-content-end">
+                <span style="font-weight: 400;">{{subTotal}} EGP</span>
+              </div>
+            </div>
+            <!-- Cargo -->
+            <div class="row mt-2">
+              <div class="col-md-8 d-flex justify-content-start">
+                <span style="font-weight: 200;">Delivery</span>
+              </div>
+              <div class="col-md-4 d-flex justify-content-end">
+                <span style="font-weight: 400;">60 EGP</span>
+              </div>
+            </div>
+            <!-- discounts -->
+            <!-- <div class="row mt-2" style="color: lightgreen;">
+              <div class="col-md-8 d-flex justify-content-start">
+                <span style="font-weight: 200;">Sale</span>
+              </div>
+              <div class="col-md-4 d-flex justify-content-end">
+                <span style="font-weight: 400;">-{{total-totalSale}} EGP</span>
+              </div>
+            </div> -->
+            <!-- conditional free Delivery -->
+            <div class="row mt-2" style="color: lightgreen;" *ngIf="subTotal>600">
+              <div class="col-md-8 d-flex justify-content-start">
+                <span style="font-weight: 200;">Free Delivery</span>
+              </div>
+              <div class="col-md-4 d-flex justify-content-end">
+                <span style="font-weight: 400;">-60 EGP</span>
+              </div>
+            </div>
+            <!-- Total -->
+            <!-- <div class="row mt-2">
+              <div class="col-md-8 d-flex justify-content-start">
+                <span style="font-weight: 200;">Total</span>
+              </div>
+              <div class="col-md-4 d-flex justify-content-end">
+                <span style="font-weight: 400;">{{totalSale}} EGP</span>
+              </div>
+            </div> -->
+            <!-- Complete Order Button -->
+            <div class="row mt-4 product-card__button">
+              <!-- <button (click)="saveOrder()" *ngIf="notAllowed">Save Order</button> -->
+              <!-- <button (click)="completeOrder()" *ngIf="!notAllowed">Complete Order</button> -->
+              <button (click)="completeOrder()">Complete Order</button>
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="container" *ngIf="cart.length==0">
+  <div class="row mt-5 d-flex justify-content-center align-items-center">
+    <img src="../../../assets/img/shopping-bag-svgrepo-com (1).svg" width="200rem" height="200rem" alt="">
+  </div>
+  <div class="row mt-3 text-center">
+    <h2>No products in your basket.</h2>
+  </div>
+  <div class="row mt-2 text-center">
+    <h2>Thousands of African products are waiting for you.
+    </h2>
+  </div>
+  <div class=" product-card__button row m-5  text-center">
+    <button style="width: 30rem; height: 3rem;" routerLink="/home">Go To Home Page</button>
+  </div>
+</div>
+
+
+<app-footer></app-footer>

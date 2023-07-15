@@ -1,0 +1,55 @@
+
+// .navbar{
+//     position: fixed;
+//     top: 2rem;
+//     z-index: 111;
+//     width: 100%;
+// }
+.nav-link {
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: width .3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+
+    font-weight: bold;
+}
+
+
+
+.carousel {
+    height: 2rem;
+    /* Adjust the height as needed */
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel-item {
+    height: 100%;
+}
+
+.slide-content {
+    background-color: black;
+    color: white;
+    text-align: center;
+    /* padding: 20px; */
+    height: 100%;
+}
+
+h6 {
+    padding-top: 0.45rem;
+}
